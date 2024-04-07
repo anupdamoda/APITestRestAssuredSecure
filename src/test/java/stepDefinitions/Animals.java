@@ -24,11 +24,12 @@ public class Animals {
  @Given("i am an authenticated user")
  public void i_am_an_authenticated_user() {
   RestAssured.baseURI = "https://api.petfinder.com/v2";
+  // please note I have removed the client id and client secret from the code - you should use a cloud service to maintain privacy
   response = RestAssured.given()
           .contentType("application/x-www-form-urlencoded; charset=utf-8")
           .formParam("grant_type","client_credentials")
-          .formParam("client_id","2RU9OFAhDlFJTsU2vTJBoxSSvTwTUs5iCpbHco3rV9HVwhJe5O")
-          .formParam("client_secret", "ubgaqZgisGjZFybnPn328Khd7MaGbJ5yKBH7eXb4")
+          .formParam("client_id","**Clientid**")
+          .formParam("client_secret", "**Clientsecret***")
           .when()
           .post(RestAssured.baseURI + "/oauth2/token");
   body = response.getBody();
